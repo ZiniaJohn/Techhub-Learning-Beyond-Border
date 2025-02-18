@@ -43,7 +43,7 @@ const ContactUs = ({ aboutProfile }) => {
                     <p>Full Stack Mern Developer</p>
                   </Card.Text>
                   <Link to="/Haider">
-                    <Button variant="outline-success">About Me</Button>
+                    <Button variant="outline-success">About</Button>
                   </Link>
                 </Card.Body>
               </Card>
