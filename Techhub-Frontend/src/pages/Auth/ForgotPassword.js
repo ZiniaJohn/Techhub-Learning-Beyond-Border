@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { forgotPassword, reset } from "../../redux/reducers/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import remember from "../../Images/forgot password.jpg";
 import { toast } from "react-hot-toast";
 import Loader from "../../components/SharedComponents/Loader";
 
@@ -36,17 +37,32 @@ const ForgotPassword = () => {
   }, [message, isError, dispatch]);
 
   return (
-    <div style={{ paddingTop: "150px" }}>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Container className="w-50 lh-lg  p-5 rounded">
+
+    <div style={{ paddingTop: "200px" }}>
+    {isLoading ? (
+      <Loader />
+    ) : (
+      <div className="d-flex vh-100">
+        <div className="w-40 d-none d-md-block">
+          <img
+            src={remember}
+            className="img-fluid"
+            alt="Login Illustration"
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+              marginTop: "-70px",
+            }}
+          />
+        </div>
+        <Container className="w-50 lh-lg p-5 rounded">
           <Row>
             <Col className="text-center">
-              <h2> Forgot PASSWRORD</h2>
-              <p>
+              <h1 style={{color:"#A45EE9" ,fontWeight: "bold"}}>Forgot Password</h1>
+              <p style={{color:"#A45EE9"}}>
                 Please provide the email address you used when you signed up for
-                our LEARNICA account.
+                your TechHub account.
               </p>
 
               <Form onSubmit={submitHandler}>
@@ -60,9 +76,9 @@ const ForgotPassword = () => {
                     value={email}
                   />
                 </Form.Group>
-                <Button variant="success" type="submit">
+                <Button style={{ backgroundColor: "#A45EE9", color: "white", borderRadius: "8px" }} type="submit">
                   Send email{" "}
-                  <span>
+                  <span style={{Backgroundcolor:"#A45EE9"}}>
                     <AiOutlineArrowRight />
                   </span>
                 </Button>
@@ -70,9 +86,10 @@ const ForgotPassword = () => {
             </Col>
           </Row>
         </Container>
-      )}
-    </div>
-  );
+      </div>
+    )}
+  </div>
+);
 };
 
 export default ForgotPassword;

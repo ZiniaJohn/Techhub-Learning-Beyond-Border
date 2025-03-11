@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Container, Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { AiFillEye } from "react-icons/ai";
 import Avatar from "../../components/SharedComponents/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../redux/reducers/auth/authSlice";
 import toast from "react-hot-toast";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import signin from "../../Images/login.jpg";
 import Loader from "../../components/SharedComponents/Loader";
 import { getUserInfo } from "../../redux/reducers/user/userSlice";
 
@@ -128,105 +128,163 @@ const Register = () => {
 
   return (
     <>
-      <div style={{ marginTop: "150px" }}>
+      <div style={{ marginTop: "100px" }}>
         {isLoading ? (
-          <Loader />
+          <p>Loading...</p>
         ) : (
-          <Container className="w-50 authWidth  p-5">
-            <Row>
-              <h1>Sign Up</h1>
-              <Col>
-                <Form onSubmit={handleSubmit} style={{ borderRadius: "15px" }}>
-                  <Avatar src={imagePrev} alt={"Error"} />
-                  <Form.Group>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter Name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
+          <div className="d-flex vh-100">
+            <div className="w-40 d-none d-md-block">
+              <img
+                src={signin} // Replace with actual image source
+                className="img-fluid"
+                alt="Login Illustration"
+                style={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "100%",
+                  marginTop: "10px",
+                }}
+              />
+            </div>
+            <Container className="w-50 authWidth p-5">
+              <Row>
+                <h3
+                  className="mb-4"
+                  style={{
+                    color: "#A45EE9",
+                    textAlign: "center",
+                    marginTop: "-60px",
+                  }}
+                >
+                  Sign Up
+                </h3>
+                <Col>
+                  <Form
+                    onSubmit={handleSubmit}
+                    style={{ borderRadius: "10px", marginTop: "-50px" }}
+                  >
+                    <Avatar
+                      src={imagePrev}
+                      alt={"Error"}
+                      style={{
+                        borderRadius: "50%",
+                        maxWidth: "40px",  // Ensure the image doesn't exceed this width
+                        maxHeight: "40px",
+                        objectFit: "contain",
+                      }}
                     />
-                  </Form.Group>
-
-                  <Form.Group controlId="formEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                      type="email"
-                      placeholder="Enter email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-
-                  <Form.Group controlId="formPassword">
-                    <Form.Label>Password</Form.Label>
-                    <InputGroup>
+                    <div style={{ marginTop: "-30px" }}></div>
+                    <Form.Group>
+                      <Form.Label>Name</Form.Label>
                       <Form.Control
-                        type={`${showPassword ? "text" : "password"}`}
-                        placeholder="Password"
-                        name="password"
-                        value={formData.password}
+                        type="text"
+                        placeholder="Enter Name"
+                        name="name"
+                        value={formData.name}
                         onChange={handleChange}
                       />
-                      <InputGroup.Text
-                        className="bg-dark text-light pointer"
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        <AiFillEye size={20} />
-                      </InputGroup.Text>
-                    </InputGroup>
-                  </Form.Group>
+                    </Form.Group>
 
-                  <Form.Group controlId="formPassword">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <InputGroup>
+                    <Form.Group controlId="formEmail">
+                      <Form.Label>Email address</Form.Label>
                       <Form.Control
-                        type={`${showPassword ? "text" : "password"}`}
-                        placeholder="Confirm password"
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
+                        type="email"
+                        placeholder="Enter email"
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange}
                       />
-                      <InputGroup.Text
-                        className="bg-dark text-light pointer"
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        <AiFillEye size={20} />
-                      </InputGroup.Text>
-                    </InputGroup>
-                  </Form.Group>
+                    </Form.Group>
 
-                  <Form.Group controlId="profilePicture">
-                    <Form.Label>Profile Picture</Form.Label>
-                    <Form.Control
-                      type="file"
-                      accept="image/jpeg, image/png, img/gif"
-                      placeholder="Select Profile Photo"
-                      onChange={selectImageHandler}
-                    />
-                  </Form.Group>
-                  {/* <ReCAPTCHA
-                    sitekey="6Ld5d6coAAAAADXzIhJGqa178gj_v5tqYyE_4o75" // Replace with your reCAPTCHA Site Key
-                    onChange={handleRecaptchaChange}
-                  /> */}
-                  <Button variant="success" type="submit" className="mt-3">
-                    Register
-                  </Button>
+                    <Form.Group controlId="formPassword">
+                      <Form.Label>Password</Form.Label>
+                      <InputGroup>
+                        <Form.Control
+                          type={showPassword ? "text" : "password"}
+                          placeholder="Password"
+                          name="password"
+                          value={formData.password}
+                          onChange={handleChange}
+                        />
 
-                  <div className="forgot-password mt-2">
-                    <p>
-                      Already Have Account ?
-                      <Link to="/Login" style={{ marginLeft: "15px" }}>
-                        Login Here
-                      </Link>
-                    </p>
-                  </div>
-                </Form>
-              </Col>
-            </Row>
-          </Container>
+                        <Button
+                          variant="outline-secondary"
+                          onClick={() => setShowPassword(!showPassword)}
+                          style={{
+                            border: "2px solid #A45EE9",
+                            outline: "none",
+                            fontSize: "1.5rem",
+                            color: "#A45EE9",
+                          }}
+                        >
+                          {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </Button>
+                      </InputGroup>
+                    </Form.Group>
+
+                    <Form.Group controlId="formConfirmPassword">
+                      <Form.Label>Confirm Password</Form.Label>
+                      <InputGroup>
+                        <Form.Control
+                          type={showPassword ? "text" : "password"}
+                          placeholder="Confirm password"
+                          name="confirmPassword"
+                          value={formData.confirmPassword}
+                          onChange={handleChange}
+                        />
+                        <Button
+                          variant="outline-secondary"
+                          onClick={() => setShowPassword(!showPassword)}
+                          style={{
+                            border: "2px solid #A45EE9",
+                            outline: "none",
+                            fontSize: "1.5rem",
+                            color: "#A45EE9",
+                          }}
+                        >
+                          {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </Button>
+                      </InputGroup>
+                    </Form.Group>
+
+                    <Form.Group controlId="profilePicture">
+                      <Form.Label>Profile Picture</Form.Label>
+                      <Form.Control
+                        type="file"
+                        accept="image/jpeg, image/png, img/gif"
+                        onChange={selectImageHandler}
+                      />
+                    </Form.Group>
+
+                    <Button
+                      type="submit"
+                      className="mt-3"
+                      style={{ backgroundColor: "#A45EE9", borderRadius: "8px" }}
+                    >
+                      Register
+                    </Button>
+
+                    <div className="forgot-password mt-2">
+                      <p style={{ color: "#A45EE9" }}>
+                        Already have an account?{" "}
+                        <Link
+                          to="/Login"
+                          style={{
+                            marginLeft: "10px",
+                            color: "#A45EE9",
+                            fontWeight: "bold",
+                            textDecoration: "underline",
+                          }}
+                        >
+                          Login Here
+                        </Link>
+                      </p>
+                    </div>
+                  </Form>
+                </Col>
+              </Row>
+            </Container>
+          </div>
         )}
       </div>
     </>

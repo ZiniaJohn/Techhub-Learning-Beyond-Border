@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import teacher from "../../Images/teacherform.jpg";
 import { useNavigate } from "react-router-dom";
 import {
   registerTeacher,
@@ -84,11 +85,30 @@ const TeacherForm = () => {
   };
 
   return (
-    <div
-      className="container"
-      style={{ marginTop: "200px", paddingBottom: "50px" }}
-    >
-      <h2 className="text-center text-bold my-4">Teacher Registration Form</h2>
+<div
+  className="container"
+  style={{ marginTop: "200px", paddingBottom: "50px" }}
+>
+  <div className="d-flex vh-100">
+    <div className="w-40 d-none d-md-block">
+      <img
+        src={teacher}
+        className="img-fluid"
+        alt="Login Illustration"
+        style={{
+          objectFit: "cover",
+          width: "90%",
+          height: "90%",
+          marginTop: "-80px",
+        }}
+      />
+    </div>
+    <div className="w-50" style={{marginTop: "-50px"}}>
+      <h2 className="text-center text-bold my-4" style={{color:"#A45EE9" ,fontWeight: "bold"}}>Teacher Registration Form</h2>
+      <p style={{color:"#A45EE9", textAlign: "center"}}>
+                Please provide your Credentials to become an Instructor at TechHub
+                and teach the World.
+              </p>
       <form onSubmit={handleSubmit} className="w-50 mx-auto">
         <div className="mb-3">
           <label className="form-label">University Email</label>
@@ -145,12 +165,15 @@ const TeacherForm = () => {
         <button
           type="submit"
           className="btn btn-primary w-100"
+          style={{ backgroundColor: "#A45EE9", color: "white", borderRadius: "8px" }}
           disabled={isLoading}
         >
           {isLoading ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>
+  </div>
+</div>
   );
 };
 
