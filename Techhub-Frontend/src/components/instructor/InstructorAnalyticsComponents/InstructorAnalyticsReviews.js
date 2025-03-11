@@ -10,7 +10,7 @@ const InstructorAnalyticsReviews = () => {
   return (
     <div>
       <h3>Latest Reviews</h3>
-      <Table striped bordered hover responsive>
+      <Table striped bordered hover responsive className="latest-review-table">
         <thead>
           <tr>
             <th>Student Name</th>

@@ -14,7 +14,7 @@ const SearchByFilter = ({
   console.log(price);
   return (
     <div>
-      <h1>Filters</h1>
+      <h3>Filters</h3>
       <StarFilter
         setRatingParam={setRatingParam}
         averageRating={Number(averageRating)}

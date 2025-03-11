@@ -6,7 +6,7 @@ const BarChart = () => {
   const { analytics } = useSelector((state) => state.instructor);
 
   // Define an array of colors for courses
-  const colors = ["#1f9bcf", "#4bbf73", "#343a40"]; // Add more colors as needed
+  const colors = ["#687EF0", "#45B6FE", "#F9A01C"]; // Add more colors as needed
 
   // Define your courses
   const courses = analytics.singleCourseEnrollments.map(

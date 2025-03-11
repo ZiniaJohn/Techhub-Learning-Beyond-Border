@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-
+import { Container, Row, Col } from "react-bootstrap";
 import EnrolledCourses from "../../components/ProfileComponents/EnrolledCourses";
 import Loader from "../../components/SharedComponents/Loader";
 
@@ -23,8 +22,10 @@ const UserEnrolledCourses = () => {
         <Loader />
       ) : (
         <Container>
-          <h1>Enrolled Courses</h1>
+
+          <h1 className="text-center mb-5 hero-section-enrolled-course">Enrolled Courses</h1>
           <EnrolledCourses courses={enrolledCourses} />
+
         </Container>
       )}
     </div>
@@ -32,3 +33,4 @@ const UserEnrolledCourses = () => {
 };
 
 export default UserEnrolledCourses;
+

@@ -28,14 +28,14 @@ const InstructorAnalyticsMain = () => {
             <div className="d-flex align-items-center">
               <TbDeviceDesktopAnalytics
                 size={50}
-                className="bg-dark rounded text-light p-2 me-2"
+                className="bg-primary rounded text-light p-2 me-2"
               />
               <h3 className="mb-0">Dashboard Analytics</h3>
             </div>
             <div>
               <Link to="/instNewCourseForm">
-                <Button variant="primary" size="sm">
-                  +Create New Course
+                <Button variant="outline-primary" className="bg-primary rounded text-light">
+                  Create New Course
                 </Button>
               </Link>
             </div>

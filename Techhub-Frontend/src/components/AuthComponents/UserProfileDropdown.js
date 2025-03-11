@@ -91,8 +91,11 @@ const UserProfileDropdown = () => {
   );
 };
 
-export default UserProfileDropdown;
-*/
+export default UserProfileDropdown; */
+
+
+
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/reducers/auth/authSlice"; // Import your logout action
@@ -114,15 +117,8 @@ const UserProfileDropdown = () => {
 
   useEffect(() => {
     dispatch(getUserInfo());
-  }, [dispatch]);
+  }, []);
 
-  const handleInstructorPanelClick = () => {
-    if (user?.teacherVerified) {
-      navigate("/instructor-main-page");
-    } else {
-      navigate("/teacher-form");
-    }
-  };
 
   return isLoading || !user ? (
     <SmallLoader />
@@ -137,8 +133,11 @@ const UserProfileDropdown = () => {
             alt="Error"
             className="img-fluid rounded-circle mb-2"
             style={{
-              width: 50,
-              height: 50,
+              width: 40,
+              height: 40,
+              position: "relative",
+              top: "5px",
+
             }}
           />
         }
@@ -146,48 +145,57 @@ const UserProfileDropdown = () => {
         size="sm"
         style={{ borderRadius: "500px" }}
       >
-        <Dropdown.Item>
+        <Dropdown className="dropdown-effect">
+        <Dropdown.Item className="custom-dropdown-item">
           <div className="d-flex align-items-center">
             <img
               src={user.avatar.url}
               alt="Error"
               className="img-fluid rounded-circle mb-2 me-2"
               style={{
-                width: 50,
-                height: 50,
+                width: 40,
+                height: 40,
               }}
             />
-            <p className="text-light fw-bold">{user.name}</p>
+            <p className="text-dark fw-bold">{user.name}</p>
           </div>
-          <p className="text-light">{user.email}</p>
+          <p className="text-dark">{user.email}</p>
+          
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={() => navigate("/edit-profile")}>
+
+        <Dropdown.Item className="custom-dropdown-item" onClick={() => navigate("/edit-profile")}>
           Update Profile
         </Dropdown.Item>
-
         <Dropdown.Divider />
-        <Dropdown.Item onClick={() => navigate("/edit-password")}>
+
+        <Dropdown.Item className="custom-dropdown-item" onClick={() => navigate("/edit-password")}>
           Change Password
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={() => navigate("/profile-photo")}>
+
+        <Dropdown.Item className="custom-dropdown-item" onClick={() => navigate("/profile-photo")}>
           Update Profile Picture
-          <Dropdown.Divider />
         </Dropdown.Item>
-        <Dropdown.Item onClick={() => navigate("/user-enrolledCourses")}>
+        <Dropdown.Divider />
+
+        <Dropdown.Item className="custom-dropdown-item" onClick={() => navigate("/user-enrolledCourses")}>
           Enrolled Courses
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={handleInstructorPanelClick}>
+
+        <Dropdown.Item className="custom-dropdown-item" onClick={() => navigate("/instructor-main-page")}>
           Instructor Panel
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={() => navigate("/cart")}>
-          Cart <span varient="outline-success">🛒</span>
+
+        <Dropdown.Item className="custom-dropdown-item" onClick={() => navigate("/cart")}>
+          Cart 
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+
+        <Dropdown.Item className="custom-dropdown-item" onClick={handleLogout}>Logout</Dropdown.Item>
+        </Dropdown>
       </DropdownButton>
     </>
   );

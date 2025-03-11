@@ -12,21 +12,24 @@ const StarFilter = ({ setRatingParam, averageRating }) => {
 
   return (
     <div>
-      <h3>Ratings</h3>
+      <h5>Ratings</h5>
       <Form>
-        <Form.Check
-          type="switch"
-          id="custom-switch-1"
-          label={<Rating value={4.5} text="4.5 & up" />}
-          onChange={() => handleCheckBoxChange(4.5)}
-          checked={selectedStar === 4.5}
-        />
+      <Form.Check
+  type="switch"
+  id="custom-switch-1"
+  label={<Rating value={4.5} text="4.5 & up" />}
+  onChange={() => handleCheckBoxChange(4.5)}
+  checked={selectedStar === 4.5}
+  className="small-switch"
+/>
+
         <Form.Check
           type="switch"
           id="custom-switch-2"
           label={<Rating value={4} text="4.0 & up" />}
           onChange={() => handleCheckBoxChange(4)}
           checked={selectedStar === 4}
+          className="small-switch"
         />
         <Form.Check
           type="switch"
@@ -34,6 +37,7 @@ const StarFilter = ({ setRatingParam, averageRating }) => {
           label={<Rating value={3.5} text="3.5 & up" />}
           onChange={() => handleCheckBoxChange(3.5)}
           checked={selectedStar === 3.5}
+          className="small-switch"
         />
         <Form.Check
           type="switch"
@@ -41,6 +45,7 @@ const StarFilter = ({ setRatingParam, averageRating }) => {
           label={<Rating value={3} text="3.0 & up" />}
           onChange={() => handleCheckBoxChange(3)}
           checked={selectedStar === 3}
+          className="small-switch"
         />
       </Form>
     </div>

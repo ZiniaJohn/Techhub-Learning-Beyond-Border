@@ -17,17 +17,18 @@ const PriceFilter = ({ setPriceParam, passedPrice }) => {
 
   return (
     <div className="mt-3">
-      <h3>Course Price</h3>
+      <h5>Course Price</h5>
       <p>Price: ${price}</p>
       <Form.Range
-        value={price}
-        onChange={handlePriceChange}
-        min={0}
-        max={100}
-        className="w-50"
-      />
+  value={price}
+  onChange={handlePriceChange}
+  min={0}
+  max={200}
+  className="custom-slider w-50"
+/>
+
       <div>
-        <Button onClick={submitPriceHandler} variant="success" size="sm">
+        <Button onClick={submitPriceHandler} variant="info" size="sm" className="rounded">
           Search By Price
         </Button>
       </div>

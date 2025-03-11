@@ -10,7 +10,7 @@ const CategoryFilter = ({ setCategoryParam, category }) => {
 
   return (
     <div className="mt-3">
-      <h4>Category</h4>
+      <h5>Category</h5>
       <Form>
         <Form.Check
           type="switch"
@@ -18,6 +18,7 @@ const CategoryFilter = ({ setCategoryParam, category }) => {
           label="Development"
           onChange={() => handleSelectedCategory("Development")}
           checked={selectedCategory === "Development"}
+           className="small-switch"
         />
         <Form.Check
           type="switch"
@@ -25,6 +26,7 @@ const CategoryFilter = ({ setCategoryParam, category }) => {
           label="Business"
           onChange={() => handleSelectedCategory("Business")}
           checked={selectedCategory === "Business"}
+           className="small-switch"
         />
         <Form.Check
           type="switch"
@@ -32,6 +34,7 @@ const CategoryFilter = ({ setCategoryParam, category }) => {
           label="IT"
           onChange={() => handleSelectedCategory("IT")}
           checked={selectedCategory === "IT"}
+           className="small-switch"
         />
         <Form.Check
           type="switch"
@@ -39,6 +42,7 @@ const CategoryFilter = ({ setCategoryParam, category }) => {
           label="Music"
           onChange={() => handleSelectedCategory("MUSIC")}
           checked={selectedCategory === "MUSIC"}
+           className="small-switch"
         />
       </Form>
     </div>

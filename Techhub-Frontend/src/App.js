@@ -413,10 +413,6 @@ import PaymentSuccess from "./pages/Payment/PaymentSuccess";
 import EnrolledCoursePlayer from "./pages/enrolledPage/EnrolledCoursePlayer";
 import UserEnrolledCourses from "./pages/Profile/UserEnrolledCourses";
 import InstructorSectionEdit from "./components/instructor/InstructorCourses/InstructorSectionEdit";
-import Haider from "./components/ContactUs/Haider";
-import Tasmia from "./components/ContactUs/Tasmia";
-import Zinia from "./components/ContactUs/Zinia";
-import Mahnoor from "./components/ContactUs/Mahnoor";
 import ContactUs from "./pages/contactUs/ContactUs";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import InstructorAnalyticsMain from "./pages/InstructorAnalytics/InstructorAnalyticsMain";
@@ -570,10 +566,7 @@ const RouterComponent = () => {
           <Route path="/search-courses" element={<SearchedCourses />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/Haider" element={<Haider />} />
-          <Route path="/Tasmia" element={<Tasmia />} />
-          <Route path="/Zinia" element={<Zinia />} />
-          <Route path="/Mahnoor" element={<Mahnoor />} />
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

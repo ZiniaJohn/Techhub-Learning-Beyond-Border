@@ -11,7 +11,7 @@ const InstructorAnalyticsTopCards = () => {
   return (
     <>
       <Col md={4}>
-        <Card className="p-5 bg-success text-light">
+        <Card className="p-5 total-earning-card text-light">
           <div className="d-flex align-items-center justify-content-between">
             <h3 className="mb-0">Total Earnings</h3>
             <RiMoneyDollarCircleLine size={45} />
@@ -20,7 +20,7 @@ const InstructorAnalyticsTopCards = () => {
         </Card>
       </Col>
       <Col md={4}>
-        <Card className="p-5 bg-dark text-light">
+        <Card className="p-5 total-joins-card text-light">
           <div className="d-flex align-items-center justify-content-between">
             <h3 className="mb-0">Total Joins</h3>
             <PiStudentDuotone size={45} />
@@ -29,7 +29,7 @@ const InstructorAnalyticsTopCards = () => {
         </Card>
       </Col>
       <Col md={4}>
-        <Card className="p-5 bg-info text-light">
+        <Card className="p-5 total-course-card text-light">
           <div className="d-flex align-items-center justify-content-between">
             <h3 className="mb-0">Total Courses</h3>
             <MdOutlineSlowMotionVideo size={45} />
