@@ -1,3 +1,5 @@
+
+
 import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { TbDeviceDesktopAnalytics } from "react-icons/tb";
@@ -29,13 +31,9 @@ const AdminPanelMain = () => {
           <Sidebar />
         </Col>
         <Col md={10} className="py-3 px-4">
-          <div className="d-flex align-items-center">
-            <TbDeviceDesktopAnalytics
-              size={50}
-              className="bg-dark rounded text-light p-2 me-2"
-            />
-            <h3 className="mb-0">Dashboard Analytics</h3>
-          </div>
+          <h3 className="text-center" style={{ color: "#556cd6", fontSize: "2rem", fontWeight: "bold", padding: "10px", backgroundColor: "#f0f4ff", borderRadius: "10px" }}>
+            DASHBOARD ANALYTICS
+          </h3>
           {isLoading || !analytics ? (
             <Loader />
           ) : (
@@ -45,11 +43,11 @@ const AdminPanelMain = () => {
               </Row>
 
               <Row className="my-4">
+              
                 <AdminCharts />
               </Row>
 
               <div className="my-4">
-                <h3>Latest Reviews From Students</h3>
                 <AdminReviews />
               </div>
             </>
@@ -62,6 +60,5 @@ const AdminPanelMain = () => {
 
 export default AdminPanelMain;
 
-// This is the component to show the admin panel.
-// In this component the admins of the appication can see the details about the courses and They can also see the analytics about everything.AdminCharts
-// Moreover, the admins can have access to the courses and they can manange the users of the application.
+
+

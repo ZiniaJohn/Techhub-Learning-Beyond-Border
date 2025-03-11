@@ -148,14 +148,24 @@ const InstSecLecture = () => {
               }
             >
               <Form.Group className="mb-3" controlId="forTheTitle">
-                <Form.Label>Title </Form.Label>
+              <Form.Label>Title </Form.Label>
                 <Form.Control
-                  type="text"
-                  placeholder="Title of Your lecture ...."
-                  value={title}
-                  onChange={(event) => setTitle(event.target.value)}
-                />
+                      type="text"
+                      name="title"
+                      placeholder="Title of lecture .."
+                      onChange={(event) => setTitle(event.target.value)}
+                      style={{
+                        borderRadius: "8px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.1)",
+                        transition: "all 0.3s ease-in-out",
+                      }}
+                      onFocus={(e) => (e.target.style.borderColor = "#007BFF")}
+                      onBlur={(e) => (e.target.style.borderColor = "#ccc")}
+                    />
               </Form.Group>
+
               <Form.Group controlId="videoLecture">
                 <Form.Label>Select Video</Form.Label>
                 <Form.Control type="file" onChange={handlevideoUpload} />
@@ -171,13 +181,14 @@ const InstSecLecture = () => {
                   </video>
                 </div>
               )}
-              <Button type="submit" variant="success" className="mt-3">
+                            <Button type="submit" variant="success" className="mt-3" style={{ backgroundColor: "#007BFF", borderColor: "#007BFF" ,borderRadius: "10px" }}>
                 {!editLecture ? "Add Lecture" : "Edit"}
               </Button>
+
             </Form>
           </Col>
         </Row>
-        <BackButton />
+  
       </Container>
     </div>
   );

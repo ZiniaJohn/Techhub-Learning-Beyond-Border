@@ -29,13 +29,26 @@ export const COLUMNS = [
       return <Rating value={value} />;
     },
   },
+ 
   {
     Header: "",
     accessor: "_id",
     Cell: ({ value }) => {
       return (
         <Link to={`/admin/courses/${value}`}>
-          <Button variant="primary" size="sm">
+          <Button
+            variant="light"
+            size="sm"
+            style={{
+              backgroundColor: "#A45EE9",
+              color: "white",
+              borderRadius: "8px",
+              minWidth: "70px",
+              border: "none",
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+              fontWeight: "bold",
+            }}
+          >
             View
           </Button>
         </Link>

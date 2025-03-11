@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
-import { PiUsersDuotone } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import { getAdminUsers } from "../../redux/reducers/admin/adminSlice";
 
@@ -28,15 +27,8 @@ const AdminPanelUsers = () => {
           <Sidebar />
         </Col>
         <Col md={10} className="py-3 px-4">
-          <div className="d-flex align-items-center">
-            <PiUsersDuotone
-              size={50}
-              className="bg-dark rounded text-light p-2 me-2"
-            />
-            <h3 className="mb-0">All Users</h3>
-          </div>
-
-          {/* Users Table */}
+          <div className="mb-3"></div>
+          {/* Users Table*/ }
           {isLoading ? (
             <Loader />
           ) : (
@@ -51,3 +43,5 @@ const AdminPanelUsers = () => {
 };
 
 export default AdminPanelUsers;
+
+

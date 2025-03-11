@@ -1,6 +1,7 @@
+
+
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import BackButton from "../../SharedComponents/BackButton";
 import { useParams } from "react-router-dom";
 
 import toast from "react-hot-toast";
@@ -36,7 +37,7 @@ const InstCourseSection = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (!title) {
-      return toast.error(" title is Required !");
+      return toast.error("Title is Required!");
     }
 
     dispatch(createSection({ title, courseId: id }));
@@ -74,23 +75,59 @@ const InstCourseSection = () => {
   return (
     <div style={{ marginTop: "150px" }}>
       <Container>
-        <h2>{!edit ? "Add Section" : "Edit section"} </h2>
+      
         <Form
           onSubmit={(event) =>
             !edit ? submitHandler(event) : submitEditHandler(event)
           }
         >
+          <h3
+            className="text-center"
+            style={{
+              color: "#ffffff",
+              fontSize: "33px",
+              fontWeight: "bold",
+              padding: "10px",
+              background: "linear-gradient(135deg, #a87fe7, #66a3ff)",
+              borderRadius: "10px",
+              marginBottom: "20px",
+              marginTop: "-7px",
+              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+              letterSpacing: "1px",
+            }}
+          >{!edit ? "ADD SECTION" : "EDIT SECTION"}
+            
+          </h3>
           <Form.Group className="mt-3" controlId="title">
-            <Form.Label>Title of Your Section </Form.Label>
+            <Form.Label>Title of Your Section</Form.Label>
             <div className="d-flex align-items-center">
               <Form.Control
                 type="text"
-                placeholder="Title Here ..."
+                name="title"
+                placeholder="Title here.."
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                style={{
+                  borderRadius: "8px",
+                  padding: "10px",
+                  border: "1px solid #ccc",
+                  boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.1)",
+                  transition: "all 0.3s ease-in-out",
+                }}
+                onFocus={(e) => (e.target.style.borderColor = "#007BFF")}
+                onBlur={(e) => (e.target.style.borderColor = "#ccc")}
               />
-              <Button type="submit" variant="success">
-                {!edit ? "Add" : "Edit"}
+              <Button
+                variant="primary"
+                className="ms-2"
+                type="submit"
+                style={{
+                  backgroundColor: "#007BFF",
+                  borderColor: "#007BFF",
+                  borderRadius: "10px",
+                }}
+              >
+                {edit ? "UPDATE" : "ADD"}
               </Button>
             </div>
           </Form.Group>
@@ -108,8 +145,6 @@ const InstCourseSection = () => {
             />
           )}
         </div>
-
-        <BackButton />
       </Container>
     </div>
   );

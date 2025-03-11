@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
 import InstructorOffCanvas from "../InstructorOffCanvas";
-import BackButton from "../../SharedComponents/BackButton";
 import {
   reset,
   updateCourse,
@@ -94,29 +93,76 @@ const InstructorSectionEdit = () => {
             </Col>
             <Col md={10} className="  autoWidth p-5">
               <Form onSubmit={submitFormHandler} className="">
-                <h2 className="text-center mb-4">Edit Your Course!</h2>
+              <h3
+        className="text-center"
+        style={{
+          color: "#ffffff",
+          fontSize: "33",
+          fontWeight: "bold",
+          padding: "10px",
+          background: "linear-gradient(135deg, #a87fe7, #66a3ff)",
+          borderRadius: "10px",
+          marginBottom: "20px",
+          marginTop: "-50px",
+          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+          letterSpacing: "1px",
+        }}
+      >
+        EDIT YOUR COURSE!
+      </h3>
                 <Form.Group controlId="title" className="mb-4">
-                  <Form.Label>Course Title</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="title"
-                    placeholder="Title of Course .."
-                    onChange={inputChangeHandler}
-                  />
-                </Form.Group>
+                    <Form.Label>Course Title</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="title"
+                      placeholder="Title of Course .."
+                      onChange={inputChangeHandler}
+                      style={{
+                        borderRadius: "8px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.1)",
+                        transition: "all 0.3s ease-in-out",
+                      }}
+                      onFocus={(e) => (e.target.style.borderColor = "#007BFF")}
+                      onBlur={(e) => (e.target.style.borderColor = "#ccc")}
+                    />
+                  </Form.Group>
                 <Form.Group controlId="preReq" className="mb-4">
-                  <Form.Label>Course Prerequisite</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="preReq"
-                    placeholder="write the Prerequisite .."
-                    onChange={inputChangeHandler}
-                  />
+                <Form.Label>Course Prerequisite</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="title"
+                      placeholder="Prequisite of Course .."
+                      onChange={inputChangeHandler}
+                      style={{
+                        borderRadius: "8px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.1)",
+                        transition: "all 0.3s ease-in-out",
+                      }}
+                      onFocus={(e) => (e.target.style.borderColor = "#007BFF")}
+                      onBlur={(e) => (e.target.style.borderColor = "#ccc")}
+                    />
                 </Form.Group>
-                <Form.Group controlId="description" className="mb-4">
-                  <Form.Label>Description</Form.Label>
-                  <TextEditor descriptionHandler={descriptionHandler} />
-                </Form.Group>
+                <Form.Group
+                    controlId="description"
+                    className="mb-3"
+                    style={{
+                      borderRadius: "8px",
+                      padding: "10px",
+                      border: "1px solid #ccc",
+                      boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.1)",
+                      transition: "all 0.3s ease-in-out",
+                    }}
+                    onFocus={(e) => (e.target.style.borderColor = "#007BFF")}
+                    onBlur={(e) => (e.target.style.borderColor = "#ccc")}
+                  >
+                    <Form.Label>Description</Form.Label>
+                    <TextEditor descriptionHandler={descriptionHandler} />
+                  </Form.Group>
+
                 <Form.Group controlId="file" className="mb-4">
                   <Form.Label>Thumbnail</Form.Label>
 
@@ -124,18 +170,36 @@ const InstructorSectionEdit = () => {
                     type="file"
                     name="file"
                     onChange={handleDrop}
+                    style={{
+                      borderRadius: "8px",
+                      padding: "10px",
+                      border: "1px solid #ccc",
+                      boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.1)",
+                      transition: "all 0.3s ease-in-out",
+                    }}
+                    onFocus={(e) => (e.target.style.borderColor = "#007BFF")}
+                    onBlur={(e) => (e.target.style.borderColor = "#ccc")}
+
                   ></Form.Control>
                 </Form.Group>
 
                 <Form.Group controlId="Price" className="mb-4">
-                  <Form.Label>Course Price</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="Price of Course .."
-                    inputMode="numeric"
-                    name="price"
-                    onChange={inputChangeHandler}
-                  />
+                <Form.Label>Course Price</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="title"
+                      placeholder="Price of Course .."
+                      onChange={inputChangeHandler}
+                      style={{
+                        borderRadius: "8px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.1)",
+                        transition: "all 0.3s ease-in-out",
+                      }}
+                      onFocus={(e) => (e.target.style.borderColor = "#007BFF")}
+                      onBlur={(e) => (e.target.style.borderColor = "#ccc")}
+                    />
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Category</Form.Label>
@@ -143,6 +207,15 @@ const InstructorSectionEdit = () => {
                     name="category"
                     aria-label="Default select example"
                     onChange={inputChangeHandler}
+                    style={{
+                      borderRadius: "8px",
+                      padding: "10px",
+                      border: "1px solid #ccc",
+                      boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.1)",
+                      transition: "all 0.3s ease-in-out",
+                    }}
+                    onFocus={(e) => (e.target.style.borderColor = "#007BFF")}
+                    onBlur={(e) => (e.target.style.borderColor = "#ccc")}
                   >
                     <option>Open this select menu</option>
                     <option value="Development">Development</option>
@@ -152,13 +225,19 @@ const InstructorSectionEdit = () => {
                     <option value="Marketing">Marketing</option>
                     <option value="Music">Music</option>
                   </Form.Select>
+                  
                 </Form.Group>
 
-                <Button variant="success" className="w-100" type="submit">
-                  Edit
-                </Button>
+                <Button
+                    variant="primary"
+                    className="w-100"
+                    type="submit"
+                    style={{ backgroundColor: "#007BFF", borderColor: "#007BFF" ,borderRadius: "10px" }}
+                  >
+                    Edit
+                  </Button>
               </Form>
-              <BackButton />
+           
             </Col>
           </Row>
         </Container>

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { MdOutlineAnalytics } from "react-icons/md";
@@ -21,11 +22,23 @@ const Sidebar = () => {
   };
 
   return (
-    <Card className="bg-dark text-light py-3" style={{ height: "100%" }}>
+    <Card
+      className="text-light py-3"
+      style={{
+        height: "100%",
+        backgroundColor: "#A45EE9",
+    
+        borderRadius: "10px",
+        boxShadow: "6px 0 15px rgba(75, 75, 75, 0.3)",
+      }}
+    >
       <NavLink to="/admin/analytics">
-        <Card.Header className="text-center pb-3 text-light">
+        <Card.Header
+          className="text-center pb-3 text-light border-0"
+          style={{ backgroundColor: "transparent" }}
+        >
           <h4>
-            <SiSololearn size={25} className="text-success" /> Techhub
+            <SiSololearn size={25} className="text-white" /> Techhub
           </h4>
         </Card.Header>
       </NavLink>
@@ -33,12 +46,10 @@ const Sidebar = () => {
         <div className="mb-2">
           <NavLink
             to="/admin/analytics"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "d-flex nav-link p-3 rounded align-items-center justify-content-between"
-                : isActive
-                ? "d-flex text-light nav-link bg-success p-3 rounded align-items-center justify-content-between"
-                : "d-flex nav-link p-3 rounded align-items-center justify-content-between"
+            className={({ isActive }) =>
+              isActive
+                ? "d-flex text-light nav-link bg-white p-3 rounded align-items-center justify-content-between text-dark"
+                : "d-flex nav-link p-3 rounded align-items-center justify-content-between text-light opacity-75"
             }
           >
             <MdOutlineAnalytics size={30} />
@@ -49,12 +60,10 @@ const Sidebar = () => {
         <div className="mb-2">
           <NavLink
             to="/admin/users"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "d-flex nav-link p-3 rounded align-items-center justify-content-between"
-                : isActive
-                ? "d-flex text-light nav-link bg-success p-3 rounded align-items-center justify-content-between"
-                : "d-flex nav-link p-3 rounded align-items-center justify-content-between"
+            className={({ isActive }) =>
+              isActive
+                ? "d-flex text-light nav-link bg-white p-3 rounded align-items-center justify-content-between text-dark"
+                : "d-flex nav-link p-3 rounded align-items-center justify-content-between text-light opacity-75"
             }
           >
             <PiUsersDuotone size={30} />
@@ -65,12 +74,10 @@ const Sidebar = () => {
         <div className="mb-2">
           <NavLink
             to="/admin/courses"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "d-flex nav-link p-3 rounded align-items-center justify-content-between"
-                : isActive
-                ? "d-flex text-light nav-link bg-success p-3 rounded align-items-center justify-content-between"
-                : "d-flex nav-link p-3 rounded align-items-center justify-content-between"
+            className={({ isActive }) =>
+              isActive
+                ? "d-flex text-light nav-link bg-white p-3 rounded align-items-center justify-content-between text-dark"
+                : "d-flex nav-link p-3 rounded align-items-center justify-content-between text-light opacity-75"
             }
           >
             <MdSlowMotionVideo size={30} />
@@ -78,16 +85,13 @@ const Sidebar = () => {
           </NavLink>
         </div>
 
-        {/* New Requests Section */}
         <div className="mb-2">
           <NavLink
             to="/admin/requests"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "d-flex nav-link p-3 rounded align-items-center justify-content-between"
-                : isActive
-                ? "d-flex text-light nav-link bg-success p-3 rounded align-items-center justify-content-between"
-                : "d-flex nav-link p-3 rounded align-items-center justify-content-between"
+            className={({ isActive }) =>
+              isActive
+                ? "d-flex text-light nav-link bg-white p-3 rounded align-items-center justify-content-between text-dark"
+                : "d-flex nav-link p-3 rounded align-items-center justify-content-between text-light opacity-75"
             }
           >
             <FaClipboardList size={30} />
@@ -95,27 +99,30 @@ const Sidebar = () => {
           </NavLink>
         </div>
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer className="border-0" style={{ backgroundColor: "transparent" }}>
         <div className="d-flex p-3 justify-content-between align-items-center">
           {isLoading || !user ? (
             <SmallLoader />
           ) : (
-            <div>
+            <div className="d-flex align-items-center">
               <img
                 src={user.avatar.url}
-                alt="Error"
+                alt="User Avatar"
                 className="img-fluid rounded-circle mb-2"
-                style={{
-                  width: 50,
-                  height: 50,
-                }}
+                style={{ width: 40, height: 40 }}
               />
-              <span className="ms-3">{user.name}</span>
+              <span className="ms-2">{user.name}</span>
             </div>
           )}
         </div>
         <div className="text-end">
-          <Button onClick={handleLogout} variant="success" size="sm">
+          <Button
+            onClick={handleLogout}
+            variant="light"
+            size="sm"
+            className="text-dark"
+            style={{ borderRadius: "8px" }}
+          >
             Logout
           </Button>
         </div>

@@ -1,3 +1,4 @@
+
 import React, { useMemo } from "react";
 import {
   useTable,
@@ -6,8 +7,7 @@ import {
   usePagination,
 } from "react-table";
 import { COLUMNS } from "./columns";
-import { Table } from "react-bootstrap";
-import GlobalFilter from "../AllUsers/GlobalFilter";
+import { Table, Card, Button, Form, InputGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const CoursesTable = () => {
@@ -18,7 +18,7 @@ const CoursesTable = () => {
       _id: course._id,
       title: course.title,
       category: course.category,
-      price: course.price,
+      price: `$${course.price}`,
       rating: course.averageRating,
     };
   });
@@ -54,61 +54,125 @@ const CoursesTable = () => {
   const { globalFilter, pageIndex } = state;
 
   return (
-    <>
-      <div className="d-flex justify-content-end">
-        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-      </div>
-      <Table striped bordered hover responsive {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render("Header")}
-                  <span>
-                    {column.isSorted ? (column.isSortedDesc ? "🔼" : "🔽") : ""}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+    <div className="mt-0">
+      <h3
+        className="text-center"
+        style={{
+          color: "#687EF0",
+          fontSize: "2rem",
+          fontWeight: "bold",
+          padding: "10px",
+          backgroundColor: "#f0f4ff",
+          borderRadius: "10px",
+          marginBottom: "20px",
+          marginTop: "-3px",
+       
+        }}
+      >
+        ALL COURSES
+      </h3>
+
+      <Card className="shadow-sm rounded-lg">
+        <div className="d-flex justify-content-end p-3">
+          <InputGroup>
+            <InputGroup.Text>
+              🔍
+            </InputGroup.Text>
+            <Form.Control
+              type="text"
+              placeholder="Search "
+              value={globalFilter || ""}
+              onChange={(e) => setGlobalFilter(e.target.value)}
+            />
+          </InputGroup>
+        </div>
+
+        <Table striped bordered hover responsive {...getTableProps()} style={{fontSize: '12px'}}>
+          <thead className="bg-light">
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps(column)}>
+                    {column.render("Header")}
+                   
+                  </th>
                 ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-      <div className="d-flex justify-content-center align-items-center">
-        <span className="me-2">
-          Page{" "}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {page.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <td {...cell.getCellProps()}>
+                      {cell.render("Cell")}
+                      {cell.column.id === "view" && (
+                        <Button
+                          variant="light"
+                          size="sm"
+                          className="ms-2"
+                          style={{
+                            backgroundColor: "#A45EE9",
+                            color: "white",
+                            borderRadius: "8px",
+                            minWidth: "70px",
+                            border: "none",
+                            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          View
+                        </Button>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      </Card>
+
+      <div className="d-flex flex-column justify-content-center align-items-center mt-3">
+        <div>
+          <Button
+            variant="light"
+            size="sm"
+            className="me-2"
+            onClick={() => previousPage()}
+            disabled={!canPreviousPage}
+            style={{
+              backgroundColor: "#A45EE9",
+              borderColor: "#A45EE9",
+              borderRadius: "5px",
+              color: "white",
+            }}
+          >
+            Prev
+          </Button>
+          <Button
+            variant="light"
+            size="sm"
+            className="ms-2"
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+            style={{
+              backgroundColor: "#A45EE9",
+              borderColor: "#A45EE9",
+              borderRadius: "5px",
+              color: "white",
+            }}
+          >
+            Next
+          </Button>
+        </div>
+        <span className="mt-2">
+          Page <strong>{pageIndex + 1} of {pageOptions.length}</strong>
         </span>
-        <button
-          className="btn btn-sm btn-primary me-1"
-          onClick={() => previousPage()}
-          disabled={!canPreviousPage}
-        >
-          Prev
-        </button>
-        <button
-          className="btn btn-sm btn-primary ms-1"
-          onClick={() => nextPage()}
-          disabled={!canNextPage}
-        >
-          Next
-        </button>
       </div>
-    </>
+    </div>
   );
 };
 
