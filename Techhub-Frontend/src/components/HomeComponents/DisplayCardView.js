@@ -1,48 +1,79 @@
 import React from "react";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
-
 import { Link } from "react-router-dom";
 import Rating from "../SharedComponents/Rating";
+
 const DisplayCardView = ({ cardData, children }) => {
-  console.log(cardData);
   return (
-    <Container className="mt-3 mb-3">
-      <h2>{children}</h2>
-      <div className="card-container">
-        <Row>
-          {cardData.map((card) => (
-            <Col
-              key={card._id}
-              md={4}
-              style={{ marginBottom: "20px" }}
-              className="flex-center"
+    <Container className="mt-4">
+      <h2 className="text-center mb-4">{children}</h2>
+      <Row className="justify-content-center g-4">
+        {cardData.slice(0, 6).map((card) => (
+          <Col key={card._id} md={4} sm={6} xs={12} className="d-flex justify-content-center">
+            <Card
+              style={{
+                width: "400px",
+                height: "400px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                borderRadius: "10px",
+                overflow: "hidden",
+                transition: "transform 0.2s ease-in-out",
+                display: "flex",
+                flexDirection: "column",
+              }}
+              className="card-hover"
             >
-              <Card style={{ height: "100%" }}>
-                <Card.Img
-                  src={card.poster && card.poster.url}
-                  variant="top"
-                  style={{ height: 200, width: "100%" }}
-                />
-                <Card.Body>
-                  <Card.Title>{card.title}</Card.Title>
-                  <Card.Text>Price: ${card.price}</Card.Text>
-                  <div className="d-flex">
-                    <p className="fw-bold me-2">{card.averageRating}</p>
-                    <Rating
-                      value={card.averageRating}
-                      text={` of ${card.numOfReviews} reviews`}
-                    />
+              <Card.Img
+                src={card.poster && card.poster.url}
+                variant="top"
+                style={{
+                  height: "220px",
+                  objectFit: "cover",
+                  borderTopLeftRadius: "10px",
+                  borderTopRightRadius: "10px",
+                }}
+              />
+              <Card.Body className="d-flex flex-column flex-grow-1">
+                <div className="flex-grow-1">
+                  <Card.Title className="fw-bold text-dark text-truncate">{card.title}</Card.Title>
+                  <Card.Text className="fw-bold text-primary mb-1">
+                    Price: ${card.price}
+                  </Card.Text>
+                  <div className="d-flex align-items-center">
+                    <p className="fw-bold mb-0 me-2">{card.averageRating}</p>
+                    <Rating value={card.averageRating} text={`(${card.numOfReviews} reviews)`} />
                   </div>
-                  <Link to={`/courseDetail/${card._id}`}>
-                    <Button variant="success" className=" text-uppercase my-3">
-                      View Details
-                    </Button>
-                  </Link>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+                </div>
+                <Link to={`/courseDetail/${card._id}`}>
+                  <Button
+                    variant="primary"
+                    className="text-uppercase w-100 mt-2"
+                    style={{
+                      backgroundColor: "#007bff",
+                      borderColor: "#007bff",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    View Details
+                  </Button>
+                </Link>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+
+      {/* "View More Courses" Button */}
+      <div className="text-center mt-4">
+        <Link to="/search-courses?keyword=&price=10&averageRating=0&category=Development&page=1">
+          <Button
+            variant="primary"
+            className="text-uppercase px-4 py-2 fw-bold"
+            style={{ backgroundColor: "#007bff", borderColor: "#007bff" }}
+          >
+            View More Courses
+          </Button>
+        </Link>
       </div>
     </Container>
   );

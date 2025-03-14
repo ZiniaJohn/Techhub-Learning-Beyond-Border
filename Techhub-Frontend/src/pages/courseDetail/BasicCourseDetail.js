@@ -38,47 +38,7 @@ const BasicCourseDetail = ({ course }) => {
     dispatch(addToCart(course._id));
   };
 
-  const paymentHandler = async (price) => {
-    if (!user) {
-      return navigate(`/Login`);
-    }
-    try {
-      const {
-        data: { apiKey },
-      } = await axios.get(`${API_URL}/api/v1/payment`);
-
-      const {
-        data: { order },
-      } = await axios.post(`${API_URL}/api/v1/payment`, { amount: price });
-
-      var options = {
-        key: apiKey, // Enter the Key ID generated from the Dashboard
-        amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        currency: "USD",
-        name: "Learnica",
-        description: "Test Transaction",
-        image: user.avatar.url,
-        order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: `${process.env.REACT_APP_API_URL}/api/v1/payment/paymentVerification?courseId=${course._id}&userId=${user._id}`,
-        prefill: {
-          name: user.name,
-          email: user.email,
-          contact: user.email,
-        },
-        notes: {
-          address: "Razorpay Corporate Office",
-        },
-        theme: {
-          color: "#3B3B3B",
-        },
-      };
-      var rzp1 = new window.Razorpay(options);
-
-      rzp1.open();
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
-  };
+  
 
   // side effects
   useEffect(() => {
@@ -94,9 +54,17 @@ const BasicCourseDetail = ({ course }) => {
 
   return (
     <div
-      className=" text-white"
-      style={{ backgroundColor: "#2d2f31", padding: "30px", height: "300px" }}
-    >
+    className="text-white"
+    style={{
+      background: "linear-gradient(135deg, #a87fe7, #66a3ff)",
+      padding: "50px",
+      height: "300px",
+      color: "#fce7f3", // Light pinkish-white for contrast
+      borderRadius: "10px",
+      fontFamily: "Arial, sans-serif", // Modern font styling
+    }}
+  >
+  
       <Container>
         <Row>
           <Col md={8} className="">
@@ -156,21 +124,20 @@ const BasicCourseDetail = ({ course }) => {
                   <h5>You are already enrolled in this course.</h5>
                 ) : (
                   <>
-                    <Button
-                      variant="outline-success"
-                      className="w-100"
-                      style={{ marginBottom: "3px" }}
-                      onClick={addToCartHandler}
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button
-                      onClick={() => paymentHandler(course.price)}
-                      variant="outline-success"
-                      className="w-100"
-                    >
-                      Buy Now
-                    </Button>
+                   <Button
+  className="w-100"
+  style={{
+    marginBottom: "3px",
+    background: "linear-gradient(135deg, #a87fe7, #66a3ff)",
+    border: "none",
+    borderRadius: "8px",
+    color: "white",
+  }}
+  onClick={addToCartHandler}
+>
+  Add to Cart
+</Button>
+                   
                   </>
                 )}
                 <span>30 days-money back gurantee</span>
