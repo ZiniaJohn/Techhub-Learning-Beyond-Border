@@ -43,7 +43,23 @@ const InstCoursesMainPage = () => {
         <Loader />
       ) : (
         <Container>
-          <h1>Your Courses.</h1>
+          <h3
+        className="text-center"
+        style={{
+          color: "#ffffff",
+          fontSize: "33",
+          fontWeight: "bold",
+          padding: "10px",
+          background: "linear-gradient(135deg, #a87fe7, #66a3ff)",
+          borderRadius: "10px",
+          marginBottom: "20px",
+          marginTop: "-10px",
+          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+          letterSpacing: "1px",
+        }}
+      >
+        YOUR COURSES
+      </h3>
           <InstCoursesTable courses={courses} onDelete={deleteCourseHandler} />
         </Container>
       )}

@@ -165,7 +165,7 @@ const InstSecLecture = () => {
                       onBlur={(e) => (e.target.style.borderColor = "#ccc")}
                     />
               </Form.Group>
-
+              <h2>{!editLecture ? "Add Lecture" : "Edit Lecture"} </h2>
               <Form.Group controlId="videoLecture">
                 <Form.Label>Select Video</Form.Label>
                 <Form.Control type="file" onChange={handlevideoUpload} />
