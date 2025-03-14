@@ -1,40 +1,82 @@
 import React from "react";
-import intro from "../../video/intro.mp4";
-
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router";
 const HomeVideo = () => {
+  const navigate = useNavigate();
   return (
-    <div className="container my-5">
-      <div className="row">
-        <div className="col-md-6">
-          <div className="d-flex justify-content-center">
-            <video
-              src={intro}
-              autoPlay
-              loop
-              controls
-              style={{ height: "100%", width: "100%" }}
-            ></video>
-          </div>
-        </div>
-        <div className="col-md-6">
-          <h2>Unlock Your Potential with TECHHUB</h2>
-          <p>
-            Welcome to TechHub, where learning knows no bounds! Embark on a
-            transformative journey to acquire new skills, enhance your
-            expertise, and achieve your professional goals. Our diverse range of
-            courses, led by industry experts, empowers you to learn at your own
-            pace, anytime, anywhere. Whether you're a beginner or an experienced
-            professional, Learnica is your gateway to a world of knowledge and
-            growth. Join us today and let the pursuit of excellence begin!
-            Explore cutting-edge topics, stay ahead of industry trends, and
-            engage with interactive content that brings learning to life. Our
-            user-friendly platform provides a seamless experience, allowing you
-            to connect with a global community of learners, share insights, and
-            collaborate on projects.
-          </p>
-        </div>
+    <Container className="my-5">
+      {/* Instructor Invitation Section */}
+      <Card
+       className="p-5 text-center rounded"
+       style={{
+         backgroundColor: "#E6E6FA", // Light Purple
+         border: "none",
+         position: "relative",
+         padding: "50px", // Increased padding for better spacing
+       }}
+      >
+        <h5 style={{ color: "#000", fontWeight: "bold" }}>Become A Instructor</h5>
+        <h2 style={{ color: "#000", fontWeight: "bold" }}>
+          You can join with <span style={{ fontWeight: "bold" }}>TechHub</span> as a{" "}
+          <Link 
+            to="/Login" 
+            style={{ color: "#000", textDecoration: "none", fontWeight: "bold" }}
+          >
+            instructor?
+          </Link>
+        </h2>
+       <Button
+        onClick={() => navigate("/Login")} // Change the path accordingly
+        style={{
+          backgroundColor: "#007bff", // Primary Blue Color
+          color: "#fff",
+          borderRadius: "8px",
+          fontWeight: "bold",
+          padding: "10px 20px",
+          border: "none",
+          cursor: "pointer",
+         
+        }}
+      >
+        Sign-Up
+      </Button>
+      </Card>
+
+      {/* How It Works Section */}
+      <div className="text-center mt-5">
+        <p style={{ color: "#000", fontWeight: "bold" }}>Over 1,235+ Courses</p>
+        <h2 style={{ color: "#000", fontWeight: "bold" }}>
+          How It <span style={{ fontWeight: "bold" }}>Work?</span>
+        </h2>
       </div>
-    </div>
+
+      <Row className="mt-4 text-center">
+        {[{ title: "Find Your Course", icon: "🔍" },
+          { title: "Book A Seat", icon: "📄" },
+          { title: "Get Certificate", icon: "🎓" },
+        ].map((step, index) => (
+          <Col md={4} key={index} className="d-flex justify-content-center">
+            <Card
+              className="p-4 shadow-sm"
+              style={{ 
+                borderRadius: "10px", 
+                minWidth: "250px",
+                backgroundColor: "#fff"
+              }}
+            >
+              <div className="fs-2">{step.icon}</div>
+              <h5 style={{ color: "#000", fontWeight: "bold" }} className="mt-3">
+                {step.title}
+              </h5>
+              <p style={{ color: "#000", fontWeight: "bold" }}>
+                It has survived not only centuries but also leaped into electronic.
+              </p>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };
 

@@ -38,7 +38,7 @@ const CreateIntriGungCourse = () => {
                     </Accordion.Header>
                     <Accordion.Body>
                       Pick something you're knowledgeable in and genuinely
-                      excited about teaching. Learn more about Learnica's
+                      excited about teaching. Learn more about Techhub
                       Marketplace Insights tool that helps you understand the
                       demand and competition for your chosen topic.
                     </Accordion.Body>
@@ -51,7 +51,7 @@ const CreateIntriGungCourse = () => {
                     </Accordion.Header>
                     <Accordion.Body>
                       Pick something you're knowledgeable in and genuinely
-                      excited about teaching. Learn more about Learnica's
+                      excited about teaching. Learn more about Techhub
                       Marketplace Insights tool that helps you understand the
                       demand and competition for your chosen topic.
                     </Accordion.Body>
@@ -64,7 +64,7 @@ const CreateIntriGungCourse = () => {
                     </Accordion.Header>
                     <Accordion.Body>
                       Pick something you're knowledgeable in and genuinely
-                      excited about teaching. Learn more about Learnica's
+                      excited about teaching. Learn more about Techhub
                       Marketplace Insights tool that helps you understand the
                       demand and competition for your chosen topic.
                     </Accordion.Body>
@@ -76,7 +76,7 @@ const CreateIntriGungCourse = () => {
                     </Accordion.Header>
                     <Accordion.Body>
                       Pick something you're knowledgeable in and genuinely
-                      excited about teaching. Learn more about Learnica's
+                      excited about teaching. Learn more about Techhub
                       Marketplace Insights tool that helps you understand the
                       demand and competition for your chosen topic.
                     </Accordion.Body>
@@ -87,7 +87,7 @@ const CreateIntriGungCourse = () => {
                     </Accordion.Header>
                     <Accordion.Body>
                       Pick something you're knowledgeable in and genuinely
-                      excited about teaching. Learn more about Learnica's
+                      excited about teaching. Learn more about Techhub
                       Marketplace Insights tool that helps you understand the
                       demand and competition for your chosen topic.
                     </Accordion.Body>
@@ -98,7 +98,7 @@ const CreateIntriGungCourse = () => {
                     </Accordion.Header>
                     <Accordion.Body>
                       Pick something you're knowledgeable in and genuinely
-                      excited about teaching. Learn more about Learnica's
+                      excited about teaching. Learn more about Techhub
                       Marketplace Insights tool that helps you understand the
                       demand and competition for your chosen topic.
                     </Accordion.Body>
@@ -112,7 +112,7 @@ const CreateIntriGungCourse = () => {
                       What are the components of a course?
                     </Accordion.Header>
                     <Accordion.Body>
-                      A Learnica course can consist of a combination of videos,
+                      A Techhub course can consist of a combination of videos,
                       slides, text, quizzes, coding exercises, assignments, and
                       practice tests. You can also add additional resources to
                       your course, including: PDFs, links, audio files, etc.
@@ -149,7 +149,7 @@ const CreateIntriGungCourse = () => {
                       Do students want quizzes, assignments, and worksheets?
                     </Accordion.Header>
                     <Accordion.Body>
-                      Yes! Learnica students love to practice and apply what
+                      Yes! Techhub students love to practice and apply what
                       they are learning. Practice activities can be anything
                       that makes a student apply their learning, not just
                       quizzes or worksheets. Udemy gives you tools to create

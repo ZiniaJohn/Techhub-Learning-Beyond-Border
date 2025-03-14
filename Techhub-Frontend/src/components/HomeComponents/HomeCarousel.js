@@ -1,40 +1,80 @@
-import Carousel from "react-bootstrap/Carousel";
 import ImageCarousel from "./ImageCarousel";
 import Container from "react-bootstrap/Container";
-import laptop from "../../Images/laptop.jpg";
-import pcBoy from "../../Images/pcBoy.jpg";
-import laptopattable from "../../Images/laptoattable.jpg";
+import pcBoy from "../../Images/brainstorm-meeting.jpg";
+import { Navigate, useNavigate } from "react-router";
+
 const HomeCarousel = () => {
+  // Inline styles
+  const navigate=useNavigate();
+  const sectionStyle = {
+    marginTop: "100px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
+
+  const contentStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "20px",
+  };
+
+  const textContainerStyle = {
+    flex: 1,
+    textAlign: "left",
+    paddingRight: "30px",
+    paddingLeft: "20px",
+    paddingTop: "10px",
+  };
+
+  const headingStyle = {
+    fontSize: "2rem",
+    fontWeight: "bold",
+    color: "#000000", // Changed to Black
+  };
+
+  const highlightStyle = {
+    color: "#000000", // Changed to Black
+    fontWeight: "bold",
+  };
+
+  const paragraphStyle = {
+    fontSize: "1rem",
+    color: "#000000", // Changed to Black
+    fontWeight: "500", // Medium Font Weight
+    marginTop: "10px",
+  };
+
   return (
-    <Container
-      fluid
-      className="pt-5 mt-2 mx-0 px-0 home-carousel-container text-light"
-    >
-      <Carousel className="home-carousel">
-        <Carousel.Item>
-          <ImageCarousel text="laptop image" imagePath={pcBoy} />
-          <Carousel.Caption>
-            <h3 className="text-light">Discover Limitless Learning</h3>
-            <p>Explore Diverse Courses for Every Passion </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <ImageCarousel text="laptop image " imagePath={laptopattable} />
-          <Carousel.Caption>
-            <h3 className="text-light">Master New Skills with Learnica</h3>
-            <p>Learn from Industry Experts </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <ImageCarousel text="laptop image " imagePath={laptop} />
-          <Carousel.Caption>
-            <h3 className="text-light">
-              Join a Community of Lifelong Learners
-            </h3>
-            <p>Enrich Your Mind, Expand Your Horizons</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+    <Container fluid style={sectionStyle}>
+      <div style={contentStyle}>
+        <div style={textContainerStyle}>
+          <h2 style={headingStyle}>
+            Now learning from anywhere, and build your{" "}
+            <span style={highlightStyle}>bright career.</span>
+          </h2>
+          <p style={paragraphStyle}>
+            It has survived not only five centuries but also the leap into
+            electronic typesetting.
+          </p>
+          <button 
+  style={{ 
+    padding: "10px 20px", 
+    fontSize: "1rem", 
+    borderRadius: "5px",
+    backgroundColor: "#007bff",  // Bootstrap Primary Blue
+    color: "#ffffff",  // White text
+    border: "none",
+    cursor: "pointer"
+  }} 
+  onClick={() => navigate("/")}  // Change the path accordingly
+>
+  Start A Journey
+</button> 
+        </div>
+        <ImageCarousel text="laptop image" imagePath={pcBoy} />
+      </div>
     </Container>
   );
 };
