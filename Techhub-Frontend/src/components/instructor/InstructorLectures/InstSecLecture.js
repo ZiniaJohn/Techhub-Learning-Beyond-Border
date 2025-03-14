@@ -141,7 +141,7 @@ const InstSecLecture = () => {
             )}
           </Col>
           <Col md={4}>
-            <h2>{!editLecture ? "Add Lecture" : "Edit Lecture"} </h2>
+           
             <Form
               onSubmit={(event) =>
                 !editLecture ? submitHandler(event) : submitEditLecture(event)
