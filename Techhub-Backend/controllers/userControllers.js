@@ -210,7 +210,7 @@ export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
   const message = `${url}`;
 
-  await sendEmail(user.email, "Learnica Reset Password", message);
+  await sendEmail(user.email, "TechHub Reset Password", message);
 
   res.status(200).json({
     success: true,
