@@ -60,31 +60,7 @@ a {
   color: #000 !important; /* Change the color to your desired value */
 }
 
-/* .carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: black; 
-  border-radius: 50%;
-} */
-/* .carousel-control-prev-icon:hover,
-.carousel-control-next-icon:hover {
-  background-color: blue;
-} */
-/* .carousel-control-prev,
-.carousel-control-next {
-  width: 10%;
-  top: 50%;
-  bottom: auto;
-  transform: translateY(-50%);
-  opacity: 0.8;
-} */
 
-/* .carousel-control-next {
-  right: 8%;
-} */
-
-/* .carousel-control-prev {
-  left: 8%;
-} */
 
 /* instructor  */
 .inst-img {

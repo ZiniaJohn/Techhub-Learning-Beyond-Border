@@ -174,9 +174,18 @@ const InstNewCourseForm = () => {
                   </Form.Select>
                 </Form.Group>
 
-                <Button variant="success" className="w-100" type="submit">
-                  Add Course
-                </Button>
+                <Button
+style={{
+  background: "#007bff",  // Bootstrap Primary Blue
+  border: "none",
+  color: "white",
+}}
+  className="w-100"
+  type="submit"
+>
+  Add Course
+</Button>
+
               </Form>
               <BackButton />
             </Col>
@@ -187,4 +196,4 @@ const InstNewCourseForm = () => {
   );
 };
 
-export default InstNewCourseForm;
+export default InstNewCourseForm

@@ -29,12 +29,15 @@ export const COLUMNS = [
       return <Rating value={value} />;
     },
   },
- 
+ /*
   {
     Header: "",
     accessor: "_id",
     Cell: ({ value }) => {
+      console.log(value);
+      
       return (
+        
         <Link to={`/admin/courses/${value}`}>
           <Button
             variant="light"
@@ -52,7 +55,11 @@ export const COLUMNS = [
             View
           </Button>
         </Link>
+        
       );
+      
     },
+    
   },
+  */
 ];

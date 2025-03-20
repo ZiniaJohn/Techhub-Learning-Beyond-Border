@@ -50,7 +50,7 @@ const ProfilePhotoUpdate = () => {
           />
         </Form.Group>
 
-        <Button type="submit" variant="outline-success" className="mt-2">
+        <Button style={{ backgroundColor: "#A45EE9", color: "white", borderRadius: "8px" }} className="mt-2" type="submit">
           Change Photo
         </Button>
       </Form>

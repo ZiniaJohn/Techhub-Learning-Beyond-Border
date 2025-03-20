@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SmallLoader from "../SharedComponents/SmallLoader";
 import { reset } from "../../redux/reducers/user/userSlice";
 import { logout } from "../../redux/reducers/auth/authSlice";
+import logo from "../../Images/logo.png";
 
 const Sidebar = () => {
   const { user, isLoading } = useSelector((state) => state.auth);
@@ -38,7 +39,11 @@ const Sidebar = () => {
           style={{ backgroundColor: "transparent" }}
         >
           <h4>
-            <SiSololearn size={25} className="text-white" /> Techhub
+            <img
+                            src={logo}
+                            alt="TechHub Logo"
+                            style={{ width: "30%", height: "3y0%" }}
+                          /> Techhub
           </h4>
         </Card.Header>
       </NavLink>

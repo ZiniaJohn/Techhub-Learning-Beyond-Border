@@ -29,8 +29,8 @@ const InstructorGuideCards = () => {
                 point.
               </Card.Text>
               <Link to="/inst-page/create-course">
-                <Button variant="outline-success" className="w-100">
-                  {" "}
+              <Button
+                  variant="outline-success" className="w-50 custom-button">
                   Get Started
                 </Button>
               </Link>
@@ -55,14 +55,13 @@ const InstructorGuideCards = () => {
                     Get started with video
                   </Card.Title>
                   <Card.Text className="mt-4">
-                    Quality video lectures can set your course apart. Use our
-                    resources to learn the basics.
+                    Quality video lectures can set your course apart.
                   </Card.Text>
                   <Link to="/inst-page/startWithVideo">
-                    <Button variant="outline-success" className="w-100">
-                      {" "}
-                      Get Started
-                    </Button>
+                  <Button
+                  variant="outline-success" className="w-100 custom-button">
+                  Get Started
+                </Button>
                   </Link>
                 </Card.Body>
               </div>
@@ -88,10 +87,10 @@ const InstructorGuideCards = () => {
                     Set your course up for success by building your audience.
                   </Card.Text>
                   <Link to="/inst-page/BuidAudience">
-                    <Button variant="outline-success" className="w-100">
-                      {" "}
-                      Get Started
-                    </Button>
+                  <Button
+                  variant="outline-success" className="w-100 custom-button">
+                  Get Started
+                </Button>
                   </Link>
                 </Card.Body>
               </div>
@@ -122,8 +121,8 @@ const InstructorGuideCards = () => {
                 point.
               </Card.Text>
               <Link to="/inst-page/instChallenge">
-                <Button variant="outline-success" className="w-100">
-                  {" "}
+                <Button
+                  variant="outline-success" className="w-50 custom-button">
                   Get Started
                 </Button>
               </Link>

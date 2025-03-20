@@ -103,8 +103,7 @@ const PlayCourseDetail = ({ course }) => {
             />
           </Form.Group>
           <div className="d-flex justify-content-between my-3">
-            <Button
-              variant="success"
+            <Button style={{backgroundColor:"blue"}}  className="w-30 custom-button"
               onClick={(e) => {
                 setRating();
                 setComment("");
@@ -112,7 +111,7 @@ const PlayCourseDetail = ({ course }) => {
             >
               Cancel
             </Button>
-            <Button type="submit" variant="success">
+            <Button style={{backgroundColor:"blue"}}  className="w-30 custom-button">
               Add Review
             </Button>
           </div>

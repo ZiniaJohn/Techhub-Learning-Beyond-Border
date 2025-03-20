@@ -38,7 +38,7 @@ const PasswordUpdate = () => {
             onChange={(e) => setNewPassword(e.target.value)}
           />
         </Form.Group>
-        <Button variant="outline-success" className="mt-2" type="submit">
+        <Button style={{ backgroundColor: "#A45EE9", color: "white", borderRadius: "8px" }} className="mt-2" type="submit">
           Save Changes
         </Button>
       </Form>

@@ -109,6 +109,7 @@ const CoursesTable = () => {
                     <td {...cell.getCellProps()}>
                       {cell.render("Cell")}
                       {cell.column.id === "view" && (
+                       
                         <Button
                           variant="light"
                           size="sm"
@@ -125,6 +126,7 @@ const CoursesTable = () => {
                         >
                           View
                         </Button>
+                        
                       )}
                     </td>
                   ))}

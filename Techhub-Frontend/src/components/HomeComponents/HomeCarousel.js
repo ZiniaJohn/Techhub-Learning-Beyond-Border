@@ -68,7 +68,7 @@ const HomeCarousel = () => {
     border: "none",
     cursor: "pointer"
   }} 
-  onClick={() => navigate("/")}  // Change the path accordingly
+  onClick={() => navigate("/Register")}  // Change the path accordingly
 >
   Start A Journey
 </button> 

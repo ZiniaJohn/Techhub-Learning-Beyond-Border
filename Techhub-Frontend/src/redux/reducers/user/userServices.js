@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const API_URL = process.env.REACT_APP_API_URL;
-// const API_URL = "https://learnica-backend-production.up.railway.app";
 
-// Update User Information
+
+
 const updateUserInfo = async (userData, token) => {
   const config = {
     headers: {

@@ -64,17 +64,7 @@ const DisplayCardView = ({ cardData, children }) => {
       </Row>
 
       {/* "View More Courses" Button */}
-      <div className="text-center mt-4">
-        <Link to="/search-courses?keyword=&price=10&averageRating=0&category=Development&page=1">
-          <Button
-            variant="primary"
-            className="text-uppercase px-4 py-2 fw-bold"
-            style={{ backgroundColor: "#007bff", borderColor: "#007bff" }}
-          >
-            View More Courses
-          </Button>
-        </Link>
-      </div>
+  
     </Container>
   );
 };

@@ -12,7 +12,7 @@ const PaymentSuccess = () => {
         </h1>
         <Link to={"/user-enrolledCourses"}>
           <div className="text-center">
-            <Button variant="success">View Course</Button>
+            <Button style={{ backgroundColor: "#A45EE9", color: "white", borderRadius: "8px" }} className="mt-2" type="submit">View Course</Button>
           </div>
         </Link>
       </Container>
