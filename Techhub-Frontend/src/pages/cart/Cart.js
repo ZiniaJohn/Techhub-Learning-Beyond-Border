@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +12,6 @@ import Loader from "../../components/SharedComponents/Loader";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import {
-  Elements,
   CardElement,
   useStripe,
   useElements,
@@ -29,10 +27,10 @@ const Cart = () => {
   const { isLoading, cartItems, isSuccess, successMessage } = useSelector(
     (state) => state.cart
   );
-  console.log(cartItems);
   const { user } = useSelector((state) => state.auth);
 
   const [isCardReady, setIsCardReady] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false); // 🔧 New state to track payment in progress
 
   const totalPayment = cartItems.reduce(
     (acc, course) => acc + (course?.price || 0),
@@ -43,9 +41,9 @@ const Cart = () => {
     cartItems.length === 1
       ? cartItems[0]?._id
       : cartItems
-        .filter((course) => course?._id)
-        .map((course) => course._id)
-        .join(",");
+          .filter((course) => course?._id)
+          .map((course) => course._id)
+          .join(",");
 
   const paymentHandler = async () => {
     try {
@@ -54,9 +52,12 @@ const Cart = () => {
         return;
       }
 
+      setIsProcessing(true); // Disable button immediately on click
+
       const cardElement = elements.getElement(CardElement);
       if (!cardElement) {
         toast.error("Card details are not loaded. Please try again.");
+        setIsProcessing(false);
         return;
       }
 
@@ -65,7 +66,7 @@ const Cart = () => {
       } = await axios.post(`${API_URL}/api/v1/payment`, {
         amount: totalPayment,
       });
-      console.log("check0");
+
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: cardElement,
@@ -75,29 +76,29 @@ const Cart = () => {
           },
         },
       });
-      console.log("check0");
+
       if (result.error) {
-        console.log("checke");
         toast.error(result.error.message);
+        setIsProcessing(false); // Re-enable on failure
       } else if (result.paymentIntent.status === "succeeded") {
         toast.success("Payment successful!");
-        console.log("checkt");
         const route =
           cartItems.length === 1
             ? "paymentVerification"
             : "multipleVerification";
+
         const res = await axios.post(`${API_URL}/api/v1/payment/${route}`, {
           paymentIntentId: result.paymentIntent.id,
           courseId: courseIdString,
           userId: user._id,
         });
-        console.log(res.data.id.id);
+
         navigate(`/paymentsuccess?reference=${res.data.id.id}`);
-        console.log("checkdispacth");
         dispatch(reset());
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "Payment failed.");
+      setIsProcessing(false); // Re-enable on error
     }
   };
 
@@ -111,7 +112,6 @@ const Cart = () => {
     };
   }, [successMessage, dispatch]);
 
-
   return (
     <div style={{ marginTop: "150px" }}>
       {isLoading ? (
@@ -119,18 +119,22 @@ const Cart = () => {
       ) : (
         <Container>
           <h2 className="Cart-heading">Your Cart</h2>
-          <h6 className="cart-total-course">Total Courses : {cartItems.length}</h6>
+          <h6 className="cart-total-course">
+            Total Courses : {cartItems.length}
+          </h6>
           <Row>
             <Col md={8}>
               {cartItems.length === 0 && (
-                <Alert variant="danger" className="alert-no-course-cart">No Items in the Cart.</Alert>
+                <Alert variant="danger" className="alert-no-course-cart">
+                  No Items in the Cart.
+                </Alert>
               )}
               {cartItems.map(
                 (item) =>
                   item &&
                   item.price !== undefined && (
                     <Card
-                      className="d-flex flex-row align-items-center mt-3 p-3 shadow-sm  cousre-container"
+                      className="d-flex flex-row align-items-center mt-3 p-3 shadow-sm cousre-container"
                       style={{
                         borderRadius: "10px",
                         overflow: "hidden",
@@ -153,8 +157,13 @@ const Cart = () => {
                       <Card.Body className="d-flex flex-column justify-content-between">
                         <div>
                           <Card.Title className="mb-1">{item.title}</Card.Title>
-                          <p className="text-muted small">Created By: {item.instructor?.name}</p>
-                          <Rating value={item.averageRating} text={`${item.numOfReviews} reviews`} />
+                          <p className="text-muted small">
+                            Created By: {item.instructor?.name}
+                          </p>
+                          <Rating
+                            value={item.averageRating}
+                            text={`${item.numOfReviews} reviews`}
+                          />
                           <p className="fw-bold mt-1">Price: ${item.price}</p>
                         </div>
                       </Card.Body>
@@ -171,28 +180,31 @@ const Cart = () => {
               )}
             </Col>
 
-            <Col md={4} className="order-first order-md-last glass-effect d-flex flex-column payment-container">
+            <Col
+              md={4}
+              className="order-first order-md-last glass-effect d-flex flex-column payment-container"
+            >
               <h2 className="glass-title">💳 Payment</h2>
               <p className="font-weight-900 glass-text">Total Price: </p>
               <h3 className="glass-price">${totalPayment.toFixed(2)}</h3>
-              <CardElement className="mb-3 glass-input" onReady={() => setIsCardReady(true)} />
+              <CardElement
+                className="mb-3 glass-input"
+                onReady={() => setIsCardReady(true)}
+              />
               <Button
                 variant="success"
                 className="w-100 glass-btn mt-auto"
                 onClick={paymentHandler}
-                disabled={!stripe || !elements || !isCardReady}
+                disabled={!stripe || !elements || !isCardReady || isProcessing}
               >
-                ✅ PAY NOW
+                {isProcessing ? "Processing..." : "✅ PAY NOW"}
               </Button>
             </Col>
-
-
           </Row>
         </Container>
       )}
     </div>
   );
-
 };
 
-export default Cart; 
+export default Cart;

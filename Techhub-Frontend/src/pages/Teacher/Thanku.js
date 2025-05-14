@@ -11,7 +11,13 @@ const ThankYouPage = ({ status = "applied" }) => {
   return (
     <div className="container text-center" style={{ marginTop: "100px" }}>
       <div className="card shadow p-4">
-        <h1 className="text-success">Thank You for Your Submission!</h1>
+        <h1
+          style={{
+            color: "rgba(145, 95, 247, 0.64)", // Updated color for the heading
+          }}
+        >
+          Thank You for Your Submission!
+        </h1>
         <p className="mt-4" style={{ fontSize: "18px", lineHeight: "1.8" }}>
           Dear Teacher,
           <br />
@@ -40,6 +46,7 @@ const ThankYouPage = ({ status = "applied" }) => {
                   width: `${100 / statusLevels.length}%`,
                   fontSize: "14px",
                   color: index <= currentLevel ? "white" : "black",
+                  backgroundColor: "rgba(145, 95, 247, 0.64)", // Updated color for progress bar
                 }}
               >
                 {level.charAt(0).toUpperCase() + level.slice(1)}
@@ -54,7 +61,14 @@ const ThankYouPage = ({ status = "applied" }) => {
           </p>
         </div>
 
-        <button className="btn btn-primary mt-4" onClick={() => navigate("/")}>
+        <button
+          className="btn btn-primary mt-4" // Ensure this class keeps the primary color button
+          style={{
+            backgroundColor: "rgba(7, 73, 160, 0.64)", // Changed button color
+            borderColor: "rgba(5, 68, 161, 0.64)", // Match the border color
+          }}
+          onClick={() => navigate("/")}
+        >
           Back to Home
         </button>
       </div>
